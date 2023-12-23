@@ -1,15 +1,17 @@
 import os
 import csv
 
-#define path
-budget_csv = os.path.join(".", "Resources", "budget_data.csv")
-
 #create lists 
 date = []
 profit_losses = []
 changes = []
 
-#open csv file
+#read and store data____________________________________________________________________
+
+#specify file to read 
+budget_csv = os.path.join(".", "Resources", "budget_data.csv")
+
+# read file
 with open(budget_csv) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=",")
 
@@ -19,16 +21,16 @@ with open(budget_csv) as csv_file:
     #loop through each row 
     for row in csv_reader:
 
-        #add to date
+        #add date
         date.append(row[0])
       
-        #add to profit_losses
+        #add profit_losses
         profit_losses.append(int(row[1]))
 
 #loop through each row
 for row in range(len(profit_losses)-1):
    
-   #add to changes 
+   #add changes 
    changes.append(profit_losses[row+1] - profit_losses[row])
 
 #perform analysis________________________________________________________________________
@@ -50,12 +52,28 @@ date_of_greatest_decrease = date[changes.index(greatest_decrease)+1]
 
 print(f'Financial Analysis')
 print(f'______________________________________________________________________________')
-print(f'                                                                              ')
 print(f'Total month: {number_of_months}')
 print(f'Total: ${net_total}')
 print(f'Average change: ${average_change}')
 print(f'Greatest Increase in Profits: {date_of_greatest_increase} (${greatest_increase})')
 print(f'Greatest Decrease in Profits: {date_of_greatest_decrease} (${greatest_decrease})')
 
-#export analysis to a text file___________________________________________________________
+#export analysis as a text file___________________________________________________________
 
+#specify file to write
+output_path = os.path.join(".", "analysis.txt")
+
+#write file
+with open(output_path, 'w') as csvfile:
+    csvwriter = csv.writer(csvfile, delimiter=',')
+
+    # Write the first row (column headers)
+    csvwriter.writerow(['Financial Analysis'])
+    csvwriter.writerow(['_______________________________________________________________________________________'])
+    csvwriter.writerow(['Total month:' , '$' + str(number_of_months)])
+    csvwriter.writerow(['Total', ('$' + str(net_total))])
+    csvwriter.writerow(['Average change', ('$' + str(average_change))])
+    csvwriter.writerow(['Greates Increase in Profit', date_of_greatest_increase, ('$' + str(greatest_increase))])
+    csvwriter.writerow(['Greates Increase in Profit', date_of_greatest_decrease, ('$' + str(greatest_decrease))])
+
+#end_______________________________________________________________________________________
