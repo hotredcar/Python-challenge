@@ -60,7 +60,7 @@ print(f'________________________________________________________________________
 #export analysis as a text file___________________________________________________________
 
 #specify file to write
-output_path = os.path.join(".", "analysis.txt")
+output_path = os.path.join(".", "Analysis", "analysis.txt")
 
 #write file
 with open(output_path, 'w') as csvfile:
