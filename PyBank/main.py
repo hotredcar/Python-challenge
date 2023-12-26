@@ -70,7 +70,7 @@ with open(output_path, 'w') as csvfile:
     # Write the first row (column headers)
     csvwriter.writerow(['Financial Analysis'])
     csvwriter.writerow(['_______________________________________________________________________________________'])
-    csvwriter.writerow(['Total month:' , '$' + str(number_of_months)])
+    csvwriter.writerow(['Total month:' , str(number_of_months)])
     csvwriter.writerow(['Total', ('$' + str(net_total))])
     csvwriter.writerow(['Average change', ('$' + str(average_change))])
     csvwriter.writerow(['Greates Increase in Profit', date_of_greatest_increase, ('$' + str(greatest_increase))])

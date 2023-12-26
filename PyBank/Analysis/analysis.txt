@@ -1,6 +1,6 @@
 Financial Analysis
 _______________________________________________________________________________________
-Total month:,$86
+Total month:,86
 Total,$22564198
 Average change,$-8311.11
 Greates Increase in Profit,Aug-16,$1862002
